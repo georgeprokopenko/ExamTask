@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
+            <connections>
+                <outlet property="activityIndicator" destination="mVe-qt-fkr" id="cAV-A0-i4t"/>
+                <outlet property="loadPostsButton" destination="m1I-zu-K1m" id="oaZ-In-813"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navBar" translatesAutoresizingMaskIntoConstraints="NO" id="1Dm-ln-axZ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="105" id="PVQ-GM-SHo"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ExamTask" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zis-dF-e7L">
+                    <rect key="frame" x="35" y="43.5" width="116" height="31.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1I-zu-K1m">
+                    <rect key="frame" x="77.5" y="313.5" width="220" height="40"/>
+                    <color key="backgroundColor" red="0.19215686274509805" green="0.37254901960784315" blue="0.50196078431372548" alpha="0.81409551056338025" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="hVt-gm-92k"/>
+                        <constraint firstAttribute="width" constant="220" id="oDy-d6-65e"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <state key="normal" title="Load Posts!">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="loadPosts:" destination="-1" eventType="touchUpInside" id="gyk-cg-ck7"/>
+                    </connections>
+                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mVe-qt-fkr">
+                    <rect key="frame" x="339" y="49" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="mVe-qt-fkr" secondAttribute="trailing" constant="16" id="53w-Rk-xIG"/>
+                <constraint firstItem="1Dm-ln-axZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6wl-SQ-czk"/>
+                <constraint firstItem="Zis-dF-e7L" firstAttribute="bottom" secondItem="1Dm-ln-axZ" secondAttribute="bottom" constant="-30" id="GOt-E8-L22"/>
+                <constraint firstItem="m1I-zu-K1m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UNX-B5-hh6"/>
+                <constraint firstItem="mVe-qt-fkr" firstAttribute="centerY" secondItem="Zis-dF-e7L" secondAttribute="centerY" id="XfK-wj-U1j"/>
+                <constraint firstItem="m1I-zu-K1m" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="cSD-1L-xpG"/>
+                <constraint firstItem="Zis-dF-e7L" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="35" id="jUs-St-ww0"/>
+                <constraint firstItem="1Dm-ln-axZ" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="wmf-3A-RGw"/>
+                <constraint firstItem="1Dm-ln-axZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="yCg-kg-EvR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="navBar" width="640" height="408"/>
+    </resources>
+</document>
