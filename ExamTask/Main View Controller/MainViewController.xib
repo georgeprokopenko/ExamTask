@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="activityIndicator" destination="mVe-qt-fkr" id="cAV-A0-i4t"/>
+                <outlet property="loadIdsButton" destination="qwT-FC-jT0" id="hmj-zb-Kbo"/>
                 <outlet property="loadPostsButton" destination="m1I-zu-K1m" id="oaZ-In-813"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,7 +36,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1I-zu-K1m">
-                    <rect key="frame" x="77.5" y="313.5" width="220" height="40"/>
+                    <rect key="frame" x="77.5" y="278.5" width="220" height="40"/>
                     <color key="backgroundColor" red="0.19215686274509805" green="0.37254901960784315" blue="0.50196078431372548" alpha="0.81409551056338025" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="hVt-gm-92k"/>
@@ -52,16 +53,34 @@
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mVe-qt-fkr">
                     <rect key="frame" x="339" y="49" width="20" height="20"/>
                 </activityIndicatorView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-FC-jT0">
+                    <rect key="frame" x="77" y="348.5" width="220" height="40"/>
+                    <color key="backgroundColor" red="0.19215686269999999" green="0.37254901959999998" blue="0.50196078430000002" alpha="0.81409551059999996" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="UEY-kK-Uxo"/>
+                        <constraint firstAttribute="width" constant="220" id="rUr-4A-ODm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <state key="normal" title="Load ItemIDs!">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="loadItemIds:" destination="-1" eventType="touchUpInside" id="85o-mI-I84"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="mVe-qt-fkr" secondAttribute="trailing" constant="16" id="53w-Rk-xIG"/>
                 <constraint firstItem="1Dm-ln-axZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6wl-SQ-czk"/>
+                <constraint firstItem="qwT-FC-jT0" firstAttribute="trailing" secondItem="m1I-zu-K1m" secondAttribute="trailing" id="9KD-hR-Ypq"/>
                 <constraint firstItem="Zis-dF-e7L" firstAttribute="bottom" secondItem="1Dm-ln-axZ" secondAttribute="bottom" constant="-30" id="GOt-E8-L22"/>
                 <constraint firstItem="m1I-zu-K1m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UNX-B5-hh6"/>
                 <constraint firstItem="mVe-qt-fkr" firstAttribute="centerY" secondItem="Zis-dF-e7L" secondAttribute="centerY" id="XfK-wj-U1j"/>
-                <constraint firstItem="m1I-zu-K1m" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="cSD-1L-xpG"/>
+                <constraint firstItem="qwT-FC-jT0" firstAttribute="top" secondItem="m1I-zu-K1m" secondAttribute="bottom" constant="30" id="bnU-3R-dEW"/>
+                <constraint firstItem="m1I-zu-K1m" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-35" id="cSD-1L-xpG"/>
                 <constraint firstItem="Zis-dF-e7L" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="35" id="jUs-St-ww0"/>
+                <constraint firstItem="qwT-FC-jT0" firstAttribute="leading" secondItem="m1I-zu-K1m" secondAttribute="leading" id="v0R-so-9Dx"/>
                 <constraint firstItem="1Dm-ln-axZ" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="wmf-3A-RGw"/>
                 <constraint firstItem="1Dm-ln-axZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="yCg-kg-EvR"/>
             </constraints>

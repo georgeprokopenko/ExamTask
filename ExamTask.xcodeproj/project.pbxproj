@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08D205F1DF30F1461B885649 /* Pods_ExamTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1247751E2AC8D72E9FB68CF6 /* Pods_ExamTask.framework */; };
+		4DB0410C20E8311B008C0AD6 /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0410B20E8311B008C0AD6 /* DataParser.m */; };
+		4DB0410F20E8422D008C0AD6 /* DataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0410E20E8422D008C0AD6 /* DataObject.m */; };
 		8727C51320E3A3CE004DB06B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8727C51220E3A3CE004DB06B /* AppDelegate.m */; };
 		8727C51B20E3A3D8004DB06B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8727C51A20E3A3D8004DB06B /* Assets.xcassets */; };
 		8727C51E20E3A3D9004DB06B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8727C51C20E3A3D9004DB06B /* LaunchScreen.storyboard */; };
@@ -23,6 +25,10 @@
 
 /* Begin PBXFileReference section */
 		1247751E2AC8D72E9FB68CF6 /* Pods_ExamTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExamTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB0410A20E8311B008C0AD6 /* DataParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
+		4DB0410B20E8311B008C0AD6 /* DataParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataParser.m; sourceTree = "<group>"; };
+		4DB0410D20E8422D008C0AD6 /* DataObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataObject.h; sourceTree = "<group>"; };
+		4DB0410E20E8422D008C0AD6 /* DataObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataObject.m; sourceTree = "<group>"; };
 		8727C50E20E3A3CE004DB06B /* ExamTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExamTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8727C51120E3A3CE004DB06B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8727C51220E3A3CE004DB06B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 		8727C51020E3A3CE004DB06B /* ExamTask */ = {
 			isa = PBXGroup;
 			children = (
+				4DB0410D20E8422D008C0AD6 /* DataObject.h */,
+				4DB0410E20E8422D008C0AD6 /* DataObject.m */,
 				8727C51120E3A3CE004DB06B /* AppDelegate.h */,
 				8727C51220E3A3CE004DB06B /* AppDelegate.m */,
 				876D16FB20E3A8A100E2AE9F /* Main View Controller */,
@@ -98,6 +106,8 @@
 				876D16F520E3A88000E2AE9F /* MainViewController.h */,
 				876D16F620E3A88000E2AE9F /* MainViewController.m */,
 				876D16F720E3A88000E2AE9F /* MainViewController.xib */,
+				4DB0410A20E8311B008C0AD6 /* DataParser.h */,
+				4DB0410B20E8311B008C0AD6 /* DataParser.m */,
 			);
 			path = "Main View Controller";
 			sourceTree = "<group>";
@@ -261,9 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB0410F20E8422D008C0AD6 /* DataObject.m in Sources */,
 				876D16FE20E3AAD100E2AE9F /* DataLoader.m in Sources */,
 				8727C52120E3A3D9004DB06B /* main.m in Sources */,
 				876D16F820E3A88000E2AE9F /* MainViewController.m in Sources */,
+				4DB0410C20E8311B008C0AD6 /* DataParser.m in Sources */,
 				876D170220E3B1F500E2AE9F /* TableViewController.m in Sources */,
 				8727C51320E3A3CE004DB06B /* AppDelegate.m in Sources */,
 				876D170920E3E13A00E2AE9F /* DetailViewController.m in Sources */,

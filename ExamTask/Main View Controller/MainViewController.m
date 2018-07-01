@@ -9,9 +9,11 @@
 #import "MainViewController.h"
 #import "TableViewController.h"
 #import "DataLoader.h"
+#import "DataParser.h"
 
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UIButton* loadPostsButton;
+@property (weak, nonatomic) IBOutlet UIButton* loadIdsButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
@@ -28,6 +30,7 @@
 
 - (void) setupViews {
     self.loadPostsButton.layer.cornerRadius = self.loadPostsButton.bounds.size.height/2;
+    self.loadIdsButton.layer.cornerRadius = self.loadPostsButton.layer.cornerRadius;
 }
 
 - (IBAction)loadPosts:(id)sender {
@@ -38,24 +41,49 @@
         [self.activityIndicator stopAnimating];
         self.loadPostsButton.enabled = YES;
         
-        if (responseData) [self performSelectorOnMainThread:@selector(showPosts:) withObject:responseData waitUntilDone:NO];
-        else [self performSelectorOnMainThread:@selector(showError) withObject:nil waitUntilDone:NO];
+        if (responseData) [DataParser parseData:responseData withCompletion:^(NSArray *array, NSError *error) {
+            if (array) [self showObjectsList:array mode:kTableVCShowPosts];
+            else [self showError];
+        }];
+        else [self showError];
     }];
 }
 
-- (void) showPosts:(id)posts {
-    if ([posts isKindOfClass:[NSArray class]]) {
-        TableViewController* tableViewController = [[TableViewController alloc] init];
-        tableViewController.posts = (NSArray*)posts;
+- (IBAction)loadItemIds:(id)sender {
+    [self.activityIndicator startAnimating];
+    self.loadPostsButton.enabled = NO;
+    
+    [DataLoader loadAllPostsWithCompletionBlock:^(id responseData, NSError *error) {
+        [self.activityIndicator stopAnimating];
+        self.loadPostsButton.enabled = YES;
+        
+        if (responseData) [DataParser parseData:responseData withCompletion:^(NSArray *array, NSError *error) {
+            if (array) [self showObjectsList:array mode:kTableVCShowItemIDs];
+            else [self showError];
+        }];
+        else [self showError];
+    }];
+}
+
+
+- (void) showObjectsList:(NSArray*)objects mode:(TableViewControllerMode)mode {
+    TableViewController* tableViewController = [[TableViewController alloc] init];
+    tableViewController.viewControllerMode = mode;
+    tableViewController.posts = objects;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
         [self.navigationController pushViewController:tableViewController animated:YES];
-    }
+    });
 }
 
 - (void) showError {
     [self.activityIndicator stopAnimating];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Smth went wrong. Try again." preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
 }
 
 

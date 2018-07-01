@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    kTableVCShowPosts,
+    kTableVCShowItemIDs,
+} TableViewControllerMode;
+
 @interface TableViewController : UIViewController
+
+@property (assign, nonatomic) TableViewControllerMode viewControllerMode;
 @property (strong, nonatomic) NSArray* posts;
+
 @end

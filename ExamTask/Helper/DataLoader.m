@@ -10,7 +10,7 @@
 @import AFNetworking;
 
 #define ALL_POSTS @"https://jsonplaceholder.typicode.com/posts"
-#define SPECIFIED_POST(a) [NSString stringWithFormat:@"https://jsonplaceholder.typicode.com/posts/%@", a]
+#define SPECIFIED_POST(a) [NSString stringWithFormat:@"https://jsonplaceholder.typicode.com/posts/%li", (long)a]
 
 @implementation DataLoader
 
@@ -25,7 +25,7 @@
     }];
 }
 
-+ (void) loadPost:(NSString*)postID withCompletionBlock:(void (^)(id responseData, NSError* error))completionBlock {
++ (void) loadPost:(NSInteger)postID withCompletionBlock:(void (^)(id responseData, NSError* error))completionBlock {
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET:SPECIFIED_POST(postID) parameters:nil progress:nil
          success:^(NSURLSessionDataTask* task, id responseObject){

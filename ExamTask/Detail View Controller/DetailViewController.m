@@ -11,6 +11,7 @@
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *itemIdLabel;
 @end
 
 @implementation DetailViewController
@@ -24,8 +25,9 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    self.titleLabel.text = self.post[@"title"];
-    self.descriptionLabel.text = self.post[@"body"];
+    self.titleLabel.text = self.post.title;
+    self.descriptionLabel.text = self.post.body;
+    self.itemIdLabel.text = [NSString stringWithFormat:@"ItemID: %li", (long)self.post.itemId];
 }
 
 - (IBAction)backButtonAction:(id)sender {

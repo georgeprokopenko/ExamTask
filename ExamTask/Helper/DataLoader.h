@@ -11,6 +11,6 @@
 @interface DataLoader : NSObject
 
 + (void) loadAllPostsWithCompletionBlock:(void (^)(id responseData, NSError* error))completionBlock;
-+ (void) loadPost:(NSString*)postID withCompletionBlock:(void (^)(id responseData, NSError* error))completionBlock;
++ (void) loadPost:(NSInteger)postID withCompletionBlock:(void (^)(id responseData, NSError* error))completionBlock;
 
 @end

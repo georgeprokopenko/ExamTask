@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "DetailViewController.h"
 #import "DataLoader.h"
+#import "DataObject.h"
 
 static NSString* cellIdentifier = @"cellIdentifier";
 
@@ -54,8 +55,11 @@ static NSString* cellIdentifier = @"cellIdentifier";
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = nil;
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    NSDictionary* post = self.posts[indexPath.row];
-    cell.textLabel.text = post[@"title"];
+    
+    DataObject* post = self.posts[indexPath.row];
+    if (self.viewControllerMode == kTableVCShowPosts) cell.textLabel.text = post.title;
+    if (self.viewControllerMode == kTableVCShowItemIDs) cell.textLabel.text = [NSString stringWithFormat:@"ItemID: %li", (long)post.itemId];
+    
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
@@ -70,26 +74,46 @@ static NSString* cellIdentifier = @"cellIdentifier";
     [self.activityIndicator startAnimating];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary* post = self.posts[indexPath.row];
-    [DataLoader loadPost:post[@"id"] withCompletionBlock:^(id responseData, NSError *error) {
-        
-        if (responseData) [self performSelectorOnMainThread:@selector(showDetailsOfPost:) withObject:responseData waitUntilDone:NO];
-        else [self performSelectorOnMainThread:@selector(showError) withObject:nil waitUntilDone:NO];
-    }];
+    DataObject* post = self.posts[indexPath.row];
+    
+    if (self.viewControllerMode == kTableVCShowPosts) [self showDetailsOfPost:post];
+    if (self.viewControllerMode == kTableVCShowItemIDs) [self showInfoOfItemID:post.itemId];
 }
 
-- (void) showDetailsOfPost:(id)post {
+- (void) showDetailsOfPost:(DataObject*)post {
     [self.activityIndicator stopAnimating];
     DetailViewController* detailViewController = [[DetailViewController alloc] init];
-    detailViewController.post = (NSDictionary*)post;
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    detailViewController.post = post;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    });
+}
+
+- (void) showInfoOfItemID:(NSInteger)itemID {
+    [DataLoader loadPost:itemID withCompletionBlock:^(id responseData, NSError *error) {
+        
+        DataObject* loadedObject = [[DataObject alloc] initWithDictionary:responseData];
+        NSString* alertTitle = [NSString stringWithFormat:@"ItemID: %li \n %@", (long)loadedObject.itemId, loadedObject.title];
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:alertTitle message:loadedObject.body preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator stopAnimating];
+            [self presentViewController:alert animated:YES completion:nil];
+        });
+    }];
 }
 
 - (void) showError {
     [self.activityIndicator stopAnimating];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Smth went wrong. Try again." preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
 }
 
 

@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
                 <outlet property="descriptionLabel" destination="SJh-lg-7Gp" id="5yy-VQ-Uw1"/>
+                <outlet property="itemIdLabel" destination="4X3-RD-gpp" id="gCj-Ky-vAq"/>
                 <outlet property="titleLabel" destination="srN-dG-2kh" id="CFU-3Z-X7F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -50,14 +51,22 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ItemID:" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4X3-RD-gpp">
+                    <rect key="frame" x="298" y="48" width="61" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="4X3-RD-gpp" secondAttribute="trailing" constant="16" id="7bc-4e-RaL"/>
                 <constraint firstItem="srN-dG-2kh" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="7kH-UH-giL"/>
                 <constraint firstItem="fEj-Y5-os0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="9eB-5q-5rv"/>
                 <constraint firstItem="WAY-d5-QOg" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="Q2T-6B-Dts"/>
                 <constraint firstItem="fEj-Y5-os0" firstAttribute="bottom" secondItem="WAY-d5-QOg" secondAttribute="bottom" constant="-30" id="Wko-KL-3Dh"/>
                 <constraint firstItem="srN-dG-2kh" firstAttribute="top" secondItem="WAY-d5-QOg" secondAttribute="bottom" constant="12" id="dCk-z3-oVl"/>
+                <constraint firstItem="4X3-RD-gpp" firstAttribute="centerY" secondItem="fEj-Y5-os0" secondAttribute="centerY" id="eDX-vX-UwV"/>
                 <constraint firstItem="SJh-lg-7Gp" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="24" id="jXF-P3-tEg"/>
                 <constraint firstItem="WAY-d5-QOg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jnN-k8-msN"/>
                 <constraint firstItem="SJh-lg-7Gp" firstAttribute="top" secondItem="srN-dG-2kh" secondAttribute="bottom" constant="12" id="kjq-0L-8Rc"/>

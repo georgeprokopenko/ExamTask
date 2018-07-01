@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataObject.h"
 
 @interface DetailViewController : UIViewController
-@property (strong, nonatomic) NSDictionary* post;
+@property (strong, nonatomic) DataObject* post;
 @end
